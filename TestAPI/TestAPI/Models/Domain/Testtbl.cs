@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TestAPI.Models;
+namespace TestAPI.Models.Domain;
 
 public partial class Testtbl
 {

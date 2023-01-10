@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using TestAPI.Models.Domain;
 
 namespace TestAPI.Models;
 
@@ -25,10 +26,9 @@ public partial class TestdbContext : DbContext
     {
         modelBuilder.Entity<Testtbl>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Testtbl");
+            entity.ToTable("Testtbl");
 
+            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.City)
                 .HasMaxLength(20)
                 .IsUnicode(false);
@@ -38,9 +38,6 @@ public partial class TestdbContext : DbContext
             entity.Property(e => e.FirstName)
                 .HasMaxLength(20)
                 .IsUnicode(false);
-            entity.Property(e => e.Id)
-                .ValueGeneratedOnAdd()
-                .HasColumnName("ID");
             entity.Property(e => e.LastName)
                 .HasMaxLength(20)
                 .IsUnicode(false);

@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TestAPI.Models;
+using TestAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<TestdbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn")));
+
+builder.Services.AddScoped<ITesttbleRepository, TesttbleRepository>();
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 
